@@ -3,49 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bantishopkart</title>
+  <title>Purniya Construction Materials</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-    .step-card {
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .step-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .step-card.shopkeeper {
-      border-color: #fb923c;
-      background-color: #fff7ed;
-    }
-    .step-card.shopkeeper:hover {
-      background-color: #fed7aa;
-    }
-    .step-card.consumer {
-      border-color: #60a5fa;
-      background-color: #eff6ff;
-    }
-    .step-card.consumer:hover {
-      background-color: #dbeafe;
-    }
-    .step-description {
-      display: none;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #d1d5db;
-    }
-    .step-description.show {
-      display: block;
-    }
-    .arrow {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .arrow.rotate {
-      transform: rotate(180deg);
     }
   </style>
 </head>
@@ -54,149 +16,125 @@
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">Bantishopkart</h1>
-        <p class="text-lg text-gray-600">Workflow Overview</p>
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">🏗️ Purniya Construction Materials</h1>
+        <p class="text-lg text-gray-600">Local Construction Materials Ordering Platform</p>
       </div>
 
-      <!-- Main Flows -->
+      <!-- Main CTA Buttons -->
       <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <!-- Shopkeeper Flow -->
-        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-400">
-          <div class="flex items-center mb-6">
-            <span class="text-2xl mr-3">🏪</span>
-            <h2 class="text-2xl font-bold text-gray-800">Shopkeeper Flow</h2>
-          </div>
-          <div class="space-y-0" id="shopkeeper-steps"></div>
+        <!-- Shopkeeper Button -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-orange-400 hover:shadow-xl transition">
+          <div class="text-4xl mb-4">🏪</div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-3">I'm a Shopkeeper</h2>
+          <p class="text-gray-600 mb-6">
+            Register your shop, manage products, and share your catalog with customers via WhatsApp.
+          </p>
+          <a href="shopkeeper-register.html" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition inline-block">
+            Register Shop →
+          </a>
         </div>
 
-        <!-- Consumer Flow -->
-        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-400">
-          <div class="flex items-center mb-6">
-            <span class="text-2xl mr-3">👥</span>
-            <h2 class="text-2xl font-bold text-gray-800">Consumer Flow</h2>
-          </div>
-          <div class="space-y-0" id="consumer-steps"></div>
+        <!-- Consumer Button -->
+        <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-blue-400 hover:shadow-xl transition">
+          <div class="text-4xl mb-4">👥</div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-3">I'm a Consumer</h2>
+          <p class="text-gray-600 mb-6">
+            Browse shop catalogs, select products, create your cart, and order via WhatsApp.
+          </p>
+          <a href="consumer-catalog.html" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition inline-block">
+            Browse Shops →
+          </a>
         </div>
       </div>
 
-      <!-- Connection Highlight -->
-      <div class="bg-gradient-to-r from-orange-50 to-blue-50 border-2 border-dashed border-gray-300 rounded-lg p-6 mb-12">
-        <div class="flex items-start gap-4">
-          <div class="text-2xl">🔗</div>
+      <!-- How It Works Section -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">📋 How It Works</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Shopkeeper Flow -->
           <div>
-            <h3 class="font-bold text-gray-800 mb-1">How They Connect</h3>
-            <p class="text-gray-600 text-sm">
-              Shopkeeper shares catalog link (Step 5) → Consumer opens it (Step 2) → Consumer
-              creates cart (Steps 3-4) → Shares back with shopkeeper (Step 5) → Order
-              confirmed and delivered!
-            </p>
+            <h3 class="font-bold text-orange-600 text-lg mb-4">Shopkeeper Steps:</h3>
+            <ol class="space-y-3">
+              <li class="flex gap-3">
+                <span class="font-bold text-orange-500">1.</span>
+                <span class="text-gray-700"><strong>Register</strong> - Shop name, phone, address</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-orange-500">2.</span>
+                <span class="text-gray-700"><strong>Add Products</strong> - Name, price, quantity</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-orange-500">3.</span>
+                <span class="text-gray-700"><strong>Share Link</strong> - Send catalog via WhatsApp</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-orange-500">4.</span>
+                <span class="text-gray-700"><strong>Get Orders</strong> - Customers send carts</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-orange-500">5.</span>
+                <span class="text-gray-700"><strong>Deliver</strong> - Prepare & hand over items</span>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Consumer Flow -->
+          <div>
+            <h3 class="font-bold text-blue-600 text-lg mb-4">Consumer Steps:</h3>
+            <ol class="space-y-3">
+              <li class="flex gap-3">
+                <span class="font-bold text-blue-500">1.</span>
+                <span class="text-gray-700"><strong>Open Link</strong> - From shopkeeper's WhatsApp</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-blue-500">2.</span>
+                <span class="text-gray-700"><strong>Browse</strong> - See all products & prices</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-blue-500">3.</span>
+                <span class="text-gray-700"><strong>Select</strong> - Choose items & quantity</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-blue-500">4.</span>
+                <span class="text-gray-700"><strong>Create Cart</strong> - Generate order summary</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="font-bold text-blue-500">5.</span>
+                <span class="text-gray-700"><strong>Send & Get</strong> - Share cart, receive items</span>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
 
-      <!-- Future Enhancements -->
+      <!-- Features -->
       <div class="bg-white rounded-xl shadow-lg p-8">
-        <div class="flex items-center mb-8">
-          <span class="text-2xl mr-3">⚡</span>
-          <h2 class="text-2xl font-bold text-gray-800">Coming Soon</h2>
-        </div>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">✨ Features</h2>
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <div class="text-4xl mb-3">💳</div>
-            <h3 class="font-bold text-gray-800 mb-2">Payment Integration</h3>
-            <p class="text-sm text-gray-600">UPI / credit card support</p>
+          <div class="text-center">
+            <div class="text-3xl mb-2">📱</div>
+            <h3 class="font-bold text-gray-800 mb-2">WhatsApp Sharing</h3>
+            <p class="text-sm text-gray-600">Share catalogs & carts directly via WhatsApp</p>
           </div>
-          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <div class="text-4xl mb-3">📦</div>
-            <h3 class="font-bold text-gray-800 mb-2">Inventory Management</h3>
-            <p class="text-sm text-gray-600">Auto-update stock levels</p>
+          <div class="text-center">
+            <div class="text-3xl mb-2">🔗</div>
+            <h3 class="font-bold text-gray-800 mb-2">Unique Links</h3>
+            <p class="text-sm text-gray-600">Each shopkeeper gets a unique catalog link</p>
           </div>
-          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <div class="text-4xl mb-3">📊</div>
-            <h3 class="font-bold text-gray-800 mb-2">Analytics Dashboard</h3>
-            <p class="text-sm text-gray-600">Sales reports for shopkeepers</p>
+          <div class="text-center">
+            <div class="text-3xl mb-2">🏪</div>
+            <h3 class="font-bold text-gray-800 mb-2">Easy Management</h3>
+            <p class="text-sm text-gray-600">Add, edit, and manage products instantly</p>
           </div>
         </div>
       </div>
 
-      <!-- Footer Stats -->
+      <!-- Footer -->
       <div class="mt-12 text-center text-gray-600 text-sm">
-        <p>Shopkeeper: 8 steps | Consumer: 7 steps | Connection: Bidirectional WhatsApp sharing</p>
+        <p>Built for Purniya district | Supporting local construction businesses 🏗️</p>
       </div>
     </div>
   </div>
-
-  <script>
-    const shopkeeperSteps = [
-      { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
-      { id: 2, title: 'Add Products', description: 'Input product name, description, price, quantity' },
-      { id: 3, title: 'Manage Catalog', description: 'Edit prices, add or remove items anytime' },
-      { id: 4, title: 'Generate Link', description: 'Unique link created for your store' },
-      { id: 5, title: 'Share Catalog', description: 'Send link to consumers via WhatsApp' },
-      { id: 6, title: 'Receive Cart', description: 'Consumer shares selected items' },
-      { id: 7, title: 'Confirm Order', description: 'Check availability and prepare items' },
-      { id: 8, title: 'Deliver', description: 'Hand over products to consumer' },
-    ];
-
-    const consumerSteps = [
-      { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
-      { id: 2, title: 'Open Catalog', description: 'Access shopkeeper\'s product list via link' },
-      { id: 3, title: 'Select Items', description: 'Use checkboxes, specify quantity' },
-      { id: 4, title: 'Create Cart', description: 'Cart auto-generated with selections' },
-      { id: 5, title: 'Share Cart', description: 'Send cart link to shopkeeper via WhatsApp' },
-      { id: 6, title: 'Get Confirmation', description: 'Shopkeeper confirms your order' },
-      { id: 7, title: 'Receive Delivery', description: 'Get your products' },
-    ];
-
-    function createStepCard(step, type) {
-      const div = document.createElement('div');
-      div.className = step-card ${type} p-4 rounded-lg border-2 mb-0;
-      
-      div.innerHTML = `
-        <div class="flex items-start justify-between cursor-pointer">
-          <div>
-            <div class="text-sm font-bold text-gray-500 mb-1">Step ${step.id}</div>
-            <h4 class="font-bold text-gray-800">${step.title}</h4>
-          </div>
-          <span class="arrow text-xl">▼</span>
-        </div>
-        <div class="step-description">
-          <p class="text-sm text-gray-600">${step.description}</p>
-        </div>
-      `;
-
-      div.addEventListener('click', function() {
-        const desc = this.querySelector('.step-description');
-        const arrow = this.querySelector('.arrow');
-        desc.classList.toggle('show');
-        arrow.classList.toggle('rotate');
-      });
-
-      if (step.id < (type === 'shopkeeper' ? 8 : 7)) {
-        const divider = document.createElement('div');
-        divider.className = 'h-6 flex justify-center my-1';
-        divider.innerHTML = '<div class="w-0.5 bg-gradient-to-b from-gray-400 to-transparent"></div>';
-        
-        const wrapper = document.createElement('div');
-        wrapper.appendChild(div);
-        wrapper.appendChild(divider);
-        return wrapper;
-      }
-
-      return div;
-    }
-
-    // Render Shopkeeper Steps
-    const shopkeeperContainer = document.getElementById('shopkeeper-steps');
-    shopkeeperSteps.forEach(step => {
-      shopkeeperContainer.appendChild(createStepCard(step, 'shopkeeper'));
-    });
-
-    // Render Consumer Steps
-    const consumerContainer = document.getElementById('consumer-steps');
-    consumerSteps.forEach(step => {
-      consumerContainer.appendChild(createStepCard(step, 'consumer'));
-    });
-  </script>
 </body>
 </html>
