@@ -4,191 +4,199 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purniya Construction Materials</title>
-  
-  <!-- React & ReactDOM from CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  
-  <!-- Babel for JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f9fafb;
+    }
+    .step-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .step-card.shopkeeper {
+      border-color: #fb923c;
+      background-color: #fff7ed;
+    }
+    .step-card.shopkeeper:hover {
+      background-color: #fed7aa;
+    }
+    .step-card.consumer {
+      border-color: #60a5fa;
+      background-color: #eff6ff;
+    }
+    .step-card.consumer:hover {
+      background-color: #dbeafe;
+    }
+    .step-description {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #d1d5db;
+    }
+    .step-description.show {
+      display: block;
+    }
+    .arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .arrow.rotate {
+      transform: rotate(180deg);
     }
   </style>
 </head>
-<body>
-  <!-- React App Container -->
-  <div id="root"></div>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="min-h-screen p-6 md:p-10">
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">Purniya Construction Materials</h1>
+        <p class="text-lg text-gray-600">Workflow Overview</p>
+      </div>
 
-  <!-- Load your shop.jsx component and render it -->
-  <script type="text/babel">
-    const { useState } = React;
-
-    function WorkflowDiagram() {
-      const [expandedStep, setExpandedStep] = useState(null);
-
-      const shopkeeperSteps = [
-        { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
-        { id: 2, title: 'Add Products', description: 'Input product name, description, price, quantity' },
-        { id: 3, title: 'Manage Catalog', description: 'Edit prices, add or remove items anytime' },
-        { id: 4, title: 'Generate Link', description: 'Unique link created for your store' },
-        { id: 5, title: 'Share Catalog', description: 'Send link to consumers via WhatsApp' },
-        { id: 6, title: 'Receive Cart', description: 'Consumer shares selected items' },
-        { id: 7, title: 'Confirm Order', description: 'Check availability and prepare items' },
-        { id: 8, title: 'Deliver', description: 'Hand over products to consumer' },
-      ];
-
-      const consumerSteps = [
-        { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
-        { id: 2, title: 'Open Catalog', description: 'Access shopkeeper\'s product list via link' },
-        { id: 3, title: 'Select Items', description: 'Use checkboxes, specify quantity' },
-        { id: 4, title: 'Create Cart', description: 'Cart auto-generated with selections' },
-        { id: 5, title: 'Share Cart', description: 'Send cart link to shopkeeper via WhatsApp' },
-        { id: 6, title: 'Get Confirmation', description: 'Shopkeeper confirms your order' },
-        { id: 7, title: 'Receive Delivery', description: 'Get your products' },
-      ];
-
-      const enhancements = [
-        { icon: '💳', title: 'Payment Integration', desc: 'UPI / credit card support' },
-        { icon: '📦', title: 'Inventory Management', desc: 'Auto-update stock levels' },
-        { icon: '📊', title: 'Analytics Dashboard', desc: 'Sales reports for shopkeepers' },
-      ];
-
-      const StepCard = ({ step, flowType }) => (
-        <div
-          className="cursor-pointer transition-all duration-300"
-          onClick={() =>
-            setExpandedStep(expandedStep === ${flowType}-${step.id} ? null : ${flowType}-${step.id})
-          }
-        >
-          <div
-            className={`
-              p-4 rounded-lg border-2 transition-all duration-300
-              ${
-                flowType === 'shopkeeper'
-                  ? 'border-orange-400 bg-orange-50 hover:bg-orange-100 hover:shadow-md'
-                  : 'border-blue-400 bg-blue-50 hover:bg-blue-100 hover:shadow-md'
-              }
-            `}
-          >
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="text-sm font-bold text-gray-500 mb-1">Step {step.id}</div>
-                <h4 className="font-bold text-gray-800">{step.title}</h4>
-              </div>
-              <span className={`text-xl transition-transform inline-block ${
-                  expandedStep === ${flowType}-${step.id} ? 'rotate-180' : ''
-                }`}>
-                ▼
-              </span>
-            </div>
-            {expandedStep === ${flowType}-${step.id} && (
-              <p className="text-sm text-gray-600 mt-2 border-t border-gray-300 pt-2">
-                {step.description}
-              </p>
-            )}
+      <!-- Main Flows -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- Shopkeeper Flow -->
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-400">
+          <div class="flex items-center mb-6">
+            <span class="text-2xl mr-3">🏪</span>
+            <h2 class="text-2xl font-bold text-gray-800">Shopkeeper Flow</h2>
           </div>
-          {step.id < (flowType === 'shopkeeper' ? 8 : 7) && (
-            <div className="h-6 flex justify-center my-1">
-              <div className="w-0.5 bg-gradient-to-b from-gray-400 to-transparent"></div>
-            </div>
-          )}
+          <div class="space-y-0" id="shopkeeper-steps"></div>
         </div>
-      );
 
-      return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 md:p-10">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">Purniya Construction Materials</h1>
-              <p className="text-lg text-gray-600">Workflow Overview</p>
-            </div>
+        <!-- Consumer Flow -->
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-400">
+          <div class="flex items-center mb-6">
+            <span class="text-2xl mr-3">👥</span>
+            <h2 class="text-2xl font-bold text-gray-800">Consumer Flow</h2>
+          </div>
+          <div class="space-y-0" id="consumer-steps"></div>
+        </div>
+      </div>
 
-            {/* Main Flows */}
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              {/* Shopkeeper Flow */}
-              <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-400">
-                <div className="flex items-center mb-6">
-                  <span className="text-2xl mr-3">🏪</span>
-                  <h2 className="text-2xl font-bold text-gray-800">Shopkeeper Flow</h2>
-                </div>
-                <div className="space-y-0">
-                  {shopkeeperSteps.map((step) => (
-                    <StepCard key={step.id} step={step} flowType="shopkeeper" />
-                  ))}
-                </div>
-              </div>
-
-              {/* Consumer Flow */}
-              <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-400">
-                <div className="flex items-center mb-6">
-                  <span className="text-2xl mr-3">👥</span>
-                  <h2 className="text-2xl font-bold text-gray-800">Consumer Flow</h2>
-                </div>
-                <div className="space-y-0">
-                  {consumerSteps.map((step) => (
-                    <StepCard key={step.id} step={step} flowType="consumer" />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Connection Highlight */}
-            <div className="bg-gradient-to-r from-orange-50 to-blue-50 border-2 border-dashed border-gray-300 rounded-lg p-6 mb-12">
-              <div className="flex items-start gap-4">
-                <div className="text-2xl">🔗</div>
-                <div>
-                  <h3 className="font-bold text-gray-800 mb-1">How They Connect</h3>
-                  <p className="text-gray-600 text-sm">
-                    Shopkeeper shares catalog link (Step 5) → Consumer opens it (Step 2) → Consumer
-                    creates cart (Steps 3-4) → Shares back with shopkeeper (Step 5) → Order
-                    confirmed and delivered!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Future Enhancements */}
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="flex items-center mb-8">
-                <span className="text-2xl mr-3">⚡</span>
-                <h2 className="text-2xl font-bold text-gray-800">Coming Soon</h2>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                {enhancements.map((item, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                    <div className="text-4xl mb-3">{item.icon}</div>
-                    <h3 className="font-bold text-gray-800 mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Footer Stats */}
-            <div className="mt-12 text-center text-gray-600 text-sm">
-              <p>Shopkeeper: 8 steps | Consumer: 7 steps | Connection: Bidirectional WhatsApp sharing</p>
-            </div>
+      <!-- Connection Highlight -->
+      <div class="bg-gradient-to-r from-orange-50 to-blue-50 border-2 border-dashed border-gray-300 rounded-lg p-6 mb-12">
+        <div class="flex items-start gap-4">
+          <div class="text-2xl">🔗</div>
+          <div>
+            <h3 class="font-bold text-gray-800 mb-1">How They Connect</h3>
+            <p class="text-gray-600 text-sm">
+              Shopkeeper shares catalog link (Step 5) → Consumer opens it (Step 2) → Consumer
+              creates cart (Steps 3-4) → Shares back with shopkeeper (Step 5) → Order
+              confirmed and delivered!
+            </p>
           </div>
         </div>
-      );
+      </div>
+
+      <!-- Future Enhancements -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="flex items-center mb-8">
+          <span class="text-2xl mr-3">⚡</span>
+          <h2 class="text-2xl font-bold text-gray-800">Coming Soon</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <div class="text-4xl mb-3">💳</div>
+            <h3 class="font-bold text-gray-800 mb-2">Payment Integration</h3>
+            <p class="text-sm text-gray-600">UPI / credit card support</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <div class="text-4xl mb-3">📦</div>
+            <h3 class="font-bold text-gray-800 mb-2">Inventory Management</h3>
+            <p class="text-sm text-gray-600">Auto-update stock levels</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <div class="text-4xl mb-3">📊</div>
+            <h3 class="font-bold text-gray-800 mb-2">Analytics Dashboard</h3>
+            <p class="text-sm text-gray-600">Sales reports for shopkeepers</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Stats -->
+      <div class="mt-12 text-center text-gray-600 text-sm">
+        <p>Shopkeeper: 8 steps | Consumer: 7 steps | Connection: Bidirectional WhatsApp sharing</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const shopkeeperSteps = [
+      { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
+      { id: 2, title: 'Add Products', description: 'Input product name, description, price, quantity' },
+      { id: 3, title: 'Manage Catalog', description: 'Edit prices, add or remove items anytime' },
+      { id: 4, title: 'Generate Link', description: 'Unique link created for your store' },
+      { id: 5, title: 'Share Catalog', description: 'Send link to consumers via WhatsApp' },
+      { id: 6, title: 'Receive Cart', description: 'Consumer shares selected items' },
+      { id: 7, title: 'Confirm Order', description: 'Check availability and prepare items' },
+      { id: 8, title: 'Deliver', description: 'Hand over products to consumer' },
+    ];
+
+    const consumerSteps = [
+      { id: 1, title: 'Register', description: 'Enter name, phone number, address' },
+      { id: 2, title: 'Open Catalog', description: 'Access shopkeeper\'s product list via link' },
+      { id: 3, title: 'Select Items', description: 'Use checkboxes, specify quantity' },
+      { id: 4, title: 'Create Cart', description: 'Cart auto-generated with selections' },
+      { id: 5, title: 'Share Cart', description: 'Send cart link to shopkeeper via WhatsApp' },
+      { id: 6, title: 'Get Confirmation', description: 'Shopkeeper confirms your order' },
+      { id: 7, title: 'Receive Delivery', description: 'Get your products' },
+    ];
+
+    function createStepCard(step, type) {
+      const div = document.createElement('div');
+      div.className = step-card ${type} p-4 rounded-lg border-2 mb-0;
+      
+      div.innerHTML = `
+        <div class="flex items-start justify-between cursor-pointer">
+          <div>
+            <div class="text-sm font-bold text-gray-500 mb-1">Step ${step.id}</div>
+            <h4 class="font-bold text-gray-800">${step.title}</h4>
+          </div>
+          <span class="arrow text-xl">▼</span>
+        </div>
+        <div class="step-description">
+          <p class="text-sm text-gray-600">${step.description}</p>
+        </div>
+      `;
+
+      div.addEventListener('click', function() {
+        const desc = this.querySelector('.step-description');
+        const arrow = this.querySelector('.arrow');
+        desc.classList.toggle('show');
+        arrow.classList.toggle('rotate');
+      });
+
+      if (step.id < (type === 'shopkeeper' ? 8 : 7)) {
+        const divider = document.createElement('div');
+        divider.className = 'h-6 flex justify-center my-1';
+        divider.innerHTML = '<div class="w-0.5 bg-gradient-to-b from-gray-400 to-transparent"></div>';
+        
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(div);
+        wrapper.appendChild(divider);
+        return wrapper;
+      }
+
+      return div;
     }
 
-    // Render the component
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<WorkflowDiagram />);
+    // Render Shopkeeper Steps
+    const shopkeeperContainer = document.getElementById('shopkeeper-steps');
+    shopkeeperSteps.forEach(step => {
+      shopkeeperContainer.appendChild(createStepCard(step, 'shopkeeper'));
+    });
+
+    // Render Consumer Steps
+    const consumerContainer = document.getElementById('consumer-steps');
+    consumerSteps.forEach(step => {
+      consumerContainer.appendChild(createStepCard(step, 'consumer'));
+    });
   </script>
 </body>
 </html>
