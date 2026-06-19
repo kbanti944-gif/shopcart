@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ChevronDown, Store, Users, Zap } from 'lucide-react';
 
 export default function WorkflowDiagram() {
   const [expandedStep, setExpandedStep] = useState(null);
@@ -53,12 +52,11 @@ export default function WorkflowDiagram() {
             <div className="text-sm font-bold text-gray-500 mb-1">Step {step.id}</div>
             <h4 className="font-bold text-gray-800">{step.title}</h4>
           </div>
-          <ChevronDown
-            size={20}
-            className={`transition-transform ${
+          <span className={`text-xl transition-transform inline-block ${
               expandedStep === ${flowType}-${step.id} ? 'rotate-180' : ''
-            }`}
-          />
+            }`}>
+            ▼
+          </span>
         </div>
         {expandedStep === ${flowType}-${step.id} && (
           <p className="text-sm text-gray-600 mt-2 border-t border-gray-300 pt-2">
@@ -88,7 +86,7 @@ export default function WorkflowDiagram() {
           {/* Shopkeeper Flow */}
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-400">
             <div className="flex items-center mb-6">
-              <Store className="text-orange-500 mr-3" size={28} />
+              <span className="text-2xl mr-3">🏪</span>
               <h2 className="text-2xl font-bold text-gray-800">Shopkeeper Flow</h2>
             </div>
             <div className="space-y-0">
@@ -101,7 +99,7 @@ export default function WorkflowDiagram() {
           {/* Consumer Flow */}
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-400">
             <div className="flex items-center mb-6">
-              <Users className="text-blue-500 mr-3" size={28} />
+              <span className="text-2xl mr-3">👥</span>
               <h2 className="text-2xl font-bold text-gray-800">Consumer Flow</h2>
             </div>
             <div className="space-y-0">
@@ -130,7 +128,7 @@ export default function WorkflowDiagram() {
         {/* Future Enhancements */}
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="flex items-center mb-8">
-            <Zap className="text-yellow-500 mr-3" size={28} />
+            <span className="text-2xl mr-3">⚡</span>
             <h2 className="text-2xl font-bold text-gray-800">Coming Soon</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
