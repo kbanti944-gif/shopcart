@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopkeeper Registration - Purniya Construction Materials</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .input-group {
+      margin-bottom: 1.25rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #fb923c;
+      box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #374151;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="min-h-screen p-6 md:p-10">
+    <div class="max-w-2xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">🏪 Register Your Shop</h1>
+        <p class="text-gray-600">Join Purniya's construction materials network</p>
+        <a href="index.html" class="text-orange-500 hover:text-orange-600 text-sm mt-2 inline-block">← Back to Home</a>
+      </div>
+
+      <!-- Form Card -->
+      <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-orange-400">
+        <form id="shopkeeper-form">
+          <!-- Shop Name -->
+          <div class="input-group">
+            <label for="shop-name">🏢 Shop Name *</label>
+            <input 
+              type="text" 
+              id="shop-name" 
+              name="shop-name" 
+              placeholder="e.g., Sharma Construction Materials" 
+              required
+            >
+          </div>
+
+          <!-- Owner Name -->
+          <div class="input-group">
+            <label for="owner-name">👤 Owner Name *</label>
+            <input 
+              type="text" 
+              id="owner-name" 
+              name="owner-name" 
+              placeholder="Your full name" 
+              required
+            >
+          </div>
+
+          <!-- Phone Number -->
+          <div class="input-group">
+            <label for="phone">📱 Phone Number *</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="e.g., 9876543210" 
+              pattern="[0-9]{10}"
+              required
+            >
+            <small class="text-gray-500">10-digit mobile number</small>
+          </div>
+
+          <!-- Address -->
+          <div class="input-group">
+            <label for="address">📍 Shop Address *</label>
+            <textarea 
+              id="address" 
+              name="address" 
+              placeholder="Street, area, landmark" 
+              rows="3"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Category -->
+          <div class="input-group">
+            <label for="category">🏗️ Category *</label>
+            <select id="category" name="category" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; font-size: 1rem;">
+              <option value="">Select category</option>
+              <option value="cement">Cement & Concrete</option>
+              <option value="steel">Steel & Iron</option>
+              <option value="sand">Sand & Aggregates</option>
+              <option value="bricks">Bricks & Tiles</option>
+              <option value="paint">Paint & Finishes</option>
+              <option value="pipes">Pipes & Fittings</option>
+              <option value="tools">Tools & Equipment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Agree Terms -->
+          <div class="input-group">
+            <label style="display: flex; align-items: center; margin-bottom: 0;">
+              <input 
+                type="checkbox" 
+                id="agree-terms" 
+                name="agree-terms" 
+                required
+                style="width: auto; margin-right: 0.5rem;"
+              >
+              <span>I agree to share products and orders via WhatsApp</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition mb-4"
+          >
+            Register Shop & Get Catalog Link
+          </button>
+        </form>
+
+        <!-- Already Registered -->
+        <div class="text-center border-t pt-4">
+          <p class="text-gray-600 text-sm mb-2">Already registered?</p>
+          <a href="shopkeeper-dashboard.html" class="text-orange-500 hover:text-orange-600 font-semibold">
+            Go to My Dashboard →
+          </a>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 class="font-bold text-blue-900 mb-3">ℹ️ What Happens After Registration?</h3>
+        <ul class="space-y-2 text-blue-800 text-sm">
+          <li>✅ You'll get a <strong>unique catalog link</strong></li>
+          <li>✅ Add your <strong>products and prices</strong></li>
+          <li>✅ Share the link via <strong>WhatsApp</strong> with customers</li>
+          <li>✅ Customers will create their carts and send it back</li>
+          <li>✅ You confirm orders and deliver! 🚚</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate unique ID for shop
+    function generateShopId() {
+      return 'shop_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    }
+
+    // Handle form submission
+    document.getElementById('shopkeeper-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const shopData = {
+        shopId: generateShopId(),
+        shopName: document.getElementById('shop-name').value,
+        ownerName: document.getElementById('owner-name').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        category: document.getElementById('category').value,
+        registeredAt: new Date().toISOString(),
+        products: []
+      };
+
+      // Save to localStorage
+      localStorage.setItem(shopData.shopId, JSON.stringify(shopData));
+      
+      // Also save a list of all shops
+      let allShops = JSON.parse(localStorage.getItem('allShops') || '[]');
+      allShops.push(shopData.shopId);
+      localStorage.setItem('allShops', JSON.stringify(allShops));
+
+      // Show success message
+      alert(✅ Shop registered successfully!\n\nYour Shop ID: ${shopData.shopId}\n\nRedirecting to dashboard...);
+
+      // Redirect to dashboard
+      window.location.href = shopkeeper-dashboard.html?shopId=${shopData.shopId};
+    });
+  </script>
+</body>
+</html>
